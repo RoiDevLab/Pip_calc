@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#0a1628">
+  <meta name="description" content="Instrument-aware Forex and XAUUSD position-size calculator.">
+  <link rel="manifest" href="manifest.json">
+  <link rel="icon" href="icon-192.png">
+  <link rel="stylesheet" href="styles.css">
+  <title>Pip Calc</title>
+</head>
+<body>
+  <main class="app-shell">
+    <header class="app-header">
+      <div>
+        <p class="eyebrow">TRADING TOOL</p>
+        <h1>Pip Calc</h1>
+        <p class="subtitle">Position size calculator</p>
+      </div>
+      <button id="installBtn" class="secondary hidden" type="button">Install</button>
+    </header>
+
+    <section class="card">
+      <div class="grid two">
+        <label>Account balance<input id="balance" type="number" inputmode="decimal" min="0" step="0.01" value="5000"></label>
+        <label>Risk %<input id="riskPct" type="number" inputmode="decimal" min="0" step="0.01" value="0.5"></label>
+      </div>
+      <div class="risk-box"><span>Risk amount</span><strong id="riskAmount">—</strong></div>
+      <label>Account currency<select id="accountCurrency"></select></label>
+    </section>
+
+    <section class="card">
+      <label>Instrument<select id="symbol"></select></label>
+      <div class="grid two">
+        <label>Stop loss (<span id="slUnit">pips</span>)<input id="sl" type="number" inputmode="decimal" min="0" step="0.1" placeholder="24.1"></label>
+        <label>Take profit (<span id="tpUnit">pips</span>)<input id="tp" type="number" inputmode="decimal" min="0" step="0.1" placeholder="62"></label>
+      </div>
+    </section>
+
+    <section class="card results-card">
+      <div class="result-main">
+        <span>Recommended lot</span>
+        <strong id="lot">—</strong>
+      </div>
+      <div class="stats">
+        <div><span>Pip/tick size</span><b id="movementSize">—</b></div>
+        <div><span>Value / 1 lot</span><b id="movementValue">—</b></div>
+        <div><span>Potential loss</span><b id="potentialLoss">—</b></div>
+        <div><span>Potential profit</span><b id="potentialProfit">—</b></div>
+        <div><span>Risk : reward</span><b id="rr">—</b></div>
+      </div>
+      <p id="rateNote" class="note">Rates are only needed when currency conversion is required.</p>
+      <div id="rateInputs"></div>
+      <p id="error" class="error" role="alert"></p>
+    </section>
+
+    <footer><small>Offline-first • Broker specs should be verified before trading.</small></footer>
+  </main>
+  <script src="engine.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
