@@ -1,6 +1,6 @@
 const E=require('./engine.js');let pass=0,fail=0;function t(name,fn){try{fn();console.log('ok - '+name);pass++}catch(e){console.error('FAIL - '+name+' - '+e.message);fail++}}function near(a,b,tol=1e-9){if(Math.abs(a-b)>tol)throw Error(`${a} != ${b}`)}
 t('GBPUSD $10/pip/lot',()=>near(E.pipValuePerLot('GBPUSD','USD').pipValuePerLot,10));
-t('USDJPY conversion',()=>near(E.pipValuePerLot('USDJPY','USD',100).pipValuePerLot,10/100));
+t('USDJPY conversion',()=>near(E.pipValuePerLot('USDJPY','USD',100).pipValuePerLot,10));
 t('GBPJPY conversion',()=>near(E.pipValuePerLot('GBPJPY','USD',100).pipValuePerLot,10));
 t('EURGBP conversion',()=>near(E.pipValuePerLot('EURGBP','USD',1.25).pipValuePerLot,12.5));
 t('AUDCAD conversion',()=>near(E.pipValuePerLot('AUDCAD','USD',1.38).pipValuePerLot,10/1.38));
